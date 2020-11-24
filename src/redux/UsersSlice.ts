@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import Axios, { AxiosResponse } from 'axios';
 import { Alert } from 'react-native';
 import { AppThunk } from './store';
+import { User } from './../utils/utils_interfaces';
 
 
 interface UsersState {
@@ -51,7 +52,7 @@ export default UsersSlice.reducer
 export const fetchUsersData = (): AppThunk => async (dispatch) => {
     try {
       dispatch(getUserDataRequest(true));
-      const response = await Axios.get(
+      const response : AxiosResponse<User[]> = await Axios.get(
         'https://jsonplaceholder.typicode.com/users',
         { timeout: 8000 },
       );
