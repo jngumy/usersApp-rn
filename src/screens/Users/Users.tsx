@@ -4,10 +4,9 @@ import { fetchUsersData } from '../../redux/UsersSlice';
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from '../../redux/rootReducer';
 
-import { FlatList, Text, SafeAreaView, View, StyleSheet, ActivityIndicator } from 'react-native';
+import { FlatList, Text, SafeAreaView, StyleSheet, ActivityIndicator } from 'react-native';
 import { Header } from 'react-native-elements';
 import UserItem from './components/UserItem';
-
 
 
 const keyExtractor = (item, index) => index.toString()
@@ -15,7 +14,6 @@ const keyExtractor = (item, index) => index.toString()
 const renderItem = ({ item }: { item: string }) => (
     <UserItem userId={item.id} />
 )
-
 
 const Users = () => {
     const dispatch = useDispatch();
@@ -53,7 +51,6 @@ const Users = () => {
                     centerComponent={{ text: 'Home', style: { fontFamily: 'SF-Pro-Display-Bold', fontSize: 18, color: 'black' } }}
                 />
                 <Text style={styles.title}>Users</Text>
-
                 {loading && (
                     <ActivityIndicator
                         style={{ height: 80 }}
@@ -66,8 +63,6 @@ const Users = () => {
                     data={users}
                     renderItem={renderItem}
                 />
-
-
             </SafeAreaView>
         </>
     )
@@ -93,7 +88,6 @@ const styles = StyleSheet.create({
         marginBottom: 0,
         fontFamily: 'SF-Pro-Display-Bold'
     },
-
     section: {
         fontSize: 11,
         backgroundColor: 'lightgrey',
@@ -104,7 +98,6 @@ const styles = StyleSheet.create({
     },
     searchBar: {
         paddingHorizontal: 15,
-
     },
     userItem: {
         fontFamily: 'SF-Pro-Display-Regular',
